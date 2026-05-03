@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import connectDB from './config/Database.js';
+import userRouter from './routes/userRoutes.js';
 
 dotenv.config(); // ✅ FIRST
 
@@ -13,6 +14,10 @@ app.use(cors());
 
 // Connect DB
 connectDB();
+
+// routes call
+
+app.use("/api/auth/",userRouter)
 
 // Routes
 app.get('/', (req, res) => {
